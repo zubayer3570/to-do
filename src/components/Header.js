@@ -15,14 +15,20 @@ const Header = () => {
             <div className="navbar-end">
                 <Link to='/' className='text-dark font-bold mx-8 text-2xl'>{user?.displayName}</Link>
                 <Link to='/addwork' className='btn btn-dark mr-4'>Add Task</Link>
-                <button onClick={() => {
-                    signOut(auth)
-                    navigate('/login')
-                }}
-                    className='btn btn-dark mr-8'
-                >
-                    Logout
-                </button>
+                {
+                    user ?
+                        <button onClick={() => {
+                            signOut(auth)
+                            navigate('/login')
+                        }}
+                            className='btn btn-dark mr-8'
+                        >
+                            Logout
+                        </button>
+                        :
+                        <Link to='/login' className='btn btn-dark mr-4'>Login</Link>
+                }
+
             </div>
         </div>
     );
